@@ -1,0 +1,38 @@
+name: Supabase keepalive ping
+
+# Каждый день в 06:00 по Баку (UTC+4, без перехода на летнее время)
+# записывает текущую дату/время в таблицу keepalive_ping.
+# GitHub Actions понимает время только в UTC, поэтому 06:00 Баку = 02:00 UTC.
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch: {}   # позволяет запустить вручную: вкладка Actions → Run workflow
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Записать текущее время в Supabase
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: |
+          set -e
+          NOW=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "Пингуем Supabase, текущее время (UTC): $NOW"
+
+          HTTP_CODE=$(curl -sS -o /tmp/response.json -w "%{http_code}" \
+            -X POST "$SUPABASE_URL/rest/v1/keepalive_ping" \
+            -H "apikey: $SUPABASE_SERVICE_ROLE_KEY" \
+            -H "Authorization: Bearer $SUPABASE_SERVICE_ROLE_KEY" \
+            -H "Content-Type: application/json" \
+            -H "Prefer: resolution=merge-duplicates" \
+            -d "{\"id\": 1, \"pinged_at\": \"$NOW\"}")
+
+          echo "Ответ Supabase (HTTP $HTTP_CODE):"
+          cat /tmp/response.json
+
+          if [ "$HTTP_CODE" -ge 300 ]; then
+            echo "Запрос завершился ошибкой (HTTP $HTTP_CODE)"
+            exit 1
+          fi
