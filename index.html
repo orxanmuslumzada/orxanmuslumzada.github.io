@@ -4,13 +4,57 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="BURO MMC — производство мебели премиум-класса и комплексное снабжение объектов в Баку. От идеи до снабжения.">
+
+<!-- ============ SEO: основные теги ============ -->
+<title>BURE27 — производство и продажа мебели в Баку | Мебель на заказ, фурнитура, кондиционеры, шторы, освещение</title>
+<meta name="description" content="BURE27 — производство и продажа мебели в Баку: мебель для дома, спальни и гостиной на заказ, мебельная фурнитура, кондиционеры, шторы, освещение и комплектация объектов под ключ.">
+<meta name="keywords" content="BURE27, мебель, мебель Баку, мебель Азербайджан, производство мебели, мебель на заказ, магазин мебели, корпусная мебель, мягкая мебель, элитная мебель, премиальная мебель, мебель для дома, мебель для спальни, мебель для гостиной, кухонная мебель, офисная мебель, гостиничная мебель, мебельная фурнитура, фурнитура для мебели, петли и фурнитура, комплектующие для мебели, кондиционеры, продажа кондиционеров, установка кондиционеров, климатические системы, шторы, жалюзи, рулонные шторы, римские шторы, блэкаут шторы, освещение, LED освещение, люстры, светильники, дизайн интерьера, комплектация интерьера, ремонт под ключ, мебель под ключ, монтаж мебели, сборка мебели, комплектация квартир, комплектация вилл, mebel, mebel Bakı, mebel istehsalı, sifarişlə mebel, mebel fabriki, mebel furnituru, kondisioner, pərdə, işıqlandırma, açar təslim interyer, custom furniture Baku, furniture manufacturer Azerbaijan, furniture fittings, air conditioners, curtains, lighting, turnkey interior">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#3d4a1c">
-<title>BURO MMC — Пространства, созданные для жизни</title>
+<link rel="canonical" href="https://bure.az/">
+
+<!-- ============ SEO: Open Graph (Facebook, LinkedIn, WhatsApp-превью) ============ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BURE27">
+<meta property="og:title" content="BURE27 — производство и продажа мебели в Баку">
+<meta property="og:description" content="Мебель на заказ, мебельная фурнитура, кондиционеры, шторы, освещение и комплектация объектов под ключ в Баку.">
+<meta property="og:url" content="https://bure.az/">
+<meta property="og:image" content="https://bure.az/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:locale:alternate" content="az_AZ">
+<meta property="og:locale:alternate" content="en_US">
+
+<!-- ============ SEO: Twitter Card ============ -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BURE27 — мебель, фурнитура, кондиционеры, шторы, освещение">
+<meta name="twitter:description" content="Производство и продажа мебели в Баку. Мебель на заказ, фурнитура, кондиционеры, шторы, освещение, интерьер под ключ.">
+<meta name="twitter:image" content="https://bure.az/og-image.jpg">
+
+<!-- ============ SEO: структурированные данные (Organization/LocalBusiness) ============
+     Базовый вариант ниже виден сразу; после загрузки данных из Supabase
+     site.js дополняет этот же блок телефоном, адресом и координатами
+     (см. renderSeoJsonLd() в site.js) — обновлять вручную не нужно. -->
+<script type="application/ld+json" id="ld-organization">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "BURE27",
+  "url": "https://bure.az/",
+  "logo": "https://bure.az/og-image.jpg",
+  "description": "Производство и продажа мебели в Баку. Мебель на заказ, фурнитура, кондиционеры, шторы, освещение, интерьер под ключ.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Баку",
+    "addressCountry": "AZ"
+  }
+}
+</script>
+
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
-<link rel="dns-prefetch" href="https://unpkg.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -1226,9 +1270,12 @@ input, select, textarea { font-family: inherit; }
 .nav__lang button.active{color:#fff;background:var(--gl-bg)}
 .nav__mobile .nav__lang{margin:16px 0 0;justify-content:center}
 .card__map{position:relative;overflow:hidden}
-.card__map .leaflet-container{position:absolute;inset:0;width:100%;height:100%;border-radius:inherit;filter:saturate(.35) brightness(.75) contrast(1.05)}
-.card__map .card__map-city{position:absolute;left:14px;bottom:14px;z-index:5;pointer-events:none}
-.card__map .card__pin{display:none}
+.card__map-frame{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;filter:saturate(.85)}
+.card__map-placeholder{position:absolute;inset:0;background:linear-gradient(135deg,#6a8030 0%,#98b448 50%,#7a9038 100%)}
+.card__map .card__map-city{position:absolute;left:14px;bottom:14px;z-index:5;pointer-events:none;font-size:0.6rem;font-weight:700;letter-spacing:.06em;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.5);text-transform:none;background:rgba(0,0,0,.35);padding:4px 9px;border-radius:20px;max-width:70%}
+.card__map-hint{position:absolute;right:10px;bottom:10px;z-index:5;pointer-events:none;font-size:10.5px;font-weight:600;padding:5px 10px;border-radius:20px;background:rgba(0,0,0,.45);color:#fff;backdrop-filter:blur(4px);white-space:nowrap}
+a.card--office{cursor:pointer;text-decoration:none;color:inherit;display:block}
+.card__pin{display:none}
 .form__note{font-size:var(--fs-xs);margin-top:10px;color:rgba(255,255,255,.6);min-height:1.2em}
 .form__note.ok{color:#8fe0a8}
 .form__note.err{color:#e88a8a}
@@ -1461,28 +1508,6 @@ input, select, textarea { font-family: inherit; }
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L0 24l6.335-1.509C8.05 23.443 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.498-5.2-1.37l-.373-.217-3.767.896.941-3.668-.243-.394A9.936 9.936 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
 </a>
 
-<script>
-  // Leaflet (карта офиса) грузится только тогда, когда реально нужна —
-  // это ~150 КБ, которые не должны задерживать первую отрисовку сайта.
-  window.loadLeaflet = function () {
-    if (window.__leafletPromise) return window.__leafletPromise;
-    window.__leafletPromise = new Promise(function (resolve, reject) {
-      var css = document.createElement('link');
-      css.rel = 'stylesheet';
-      css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-      css.crossOrigin = '';
-      document.head.appendChild(css);
-
-      var script = document.createElement('script');
-      script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
-      script.crossOrigin = '';
-      script.onload = function () { resolve(window.L); };
-      script.onerror = reject;
-      document.head.appendChild(script);
-    });
-    return window.__leafletPromise;
-  };
-</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 /**
@@ -1491,8 +1516,8 @@ input, select, textarea { font-family: inherit; }
  * anon key безопасно класть в публичный код — доступ к данным
  * ограничивается политиками RLS (см. supabase/schema.sql).
  */
-window.SUPABASE_URL = 'https://byjlocpncdqadnvtkjqk.supabase.co';
-window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ5amxvY3BuY2RxYWRudnRranFrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODU3Mzc3MjIsImV4cCI6MjEwMTMxMzcyMn0.nt1tk05nLU2HDebCWLIMwvBHjM5vc_n8sClOz0Z_Kn4';
+window.SUPABASE_URL = 'https://vtolghfbgtxplccrkfge.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ0b2xnaGZiZ3R4cGxjY3JrZmdlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMzNTM2ODUsImV4cCI6MjA5ODkyOTY4NX0.VWci5D5sY5AT4A5ensQwAO8kP6AQGvDKXOx851fEo3Y';
 
 if (!/^eyJ/.test(window.SUPABASE_ANON_KEY)) {
   console.error('[config] SUPABASE_ANON_KEY выглядит некорректно — обычно начинается с "eyJ". Проверьте, не попали ли лишние символы при копировании.');
@@ -1526,7 +1551,8 @@ window.LOCALES.ru = {
     "label": "Что мы делаем",
     "title": "Услуги & Продукция",
     "galleryLink": "Посмотреть галерею",
-    "officeLabel": "Наш офис"
+    "officeLabel": "Наш офис",
+    "openInMaps": "Открыть в Google Картах"
   },
   "contact": {
     "eyebrow": "Напишите или позвоните",
@@ -1602,7 +1628,8 @@ window.LOCALES.en = {
     "label": "What we do",
     "title": "Services & Products",
     "galleryLink": "View gallery",
-    "officeLabel": "Our office"
+    "officeLabel": "Our office",
+    "openInMaps": "Open in Google Maps"
   },
   "contact": {
     "eyebrow": "Write or call us",
@@ -1678,7 +1705,8 @@ window.LOCALES.az = {
     "label": "Nə edirik",
     "title": "Xidmətlər & Məhsullar",
     "galleryLink": "Qalereyaya baxın",
-    "officeLabel": "Ofisimiz"
+    "officeLabel": "Ofisimiz",
+    "openInMaps": "Google Xəritələrdə aç"
   },
   "contact": {
     "eyebrow": "Yazın və ya zəng edin",
@@ -1882,6 +1910,7 @@ var SOCIAL_ICONS = {
   whatsapp: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zM12 0C5.373 0 0 5.373 0 12c0 2.123.554 4.118 1.528 5.847L0 24l6.335-1.509C8.05 23.443 9.983 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.885 0-3.655-.498-5.2-1.37l-.373-.217-3.767.896.941-3.668-.243-.394A9.936 9.936 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>',
   telegram: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.944 4.463c.293-1.24-.945-2.222-2.098-1.73L2.32 10.29c-1.146.487-1.14 2.13.01 2.607l4.32 1.79 1.66 5.47c.19.63 1 .82 1.46.35l2.42-2.48 4.51 3.35c.9.67 2.19.18 2.42-.92l3.35-15.99zM8.98 13.86l8.94-6.9c.24-.19.55.1.34.31l-7.34 7.02-.27 3.72-1.16-4.15z"/></svg>',
   tiktok: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.6 5.82a4.28 4.28 0 01-.94-2.65h-3.05v13.6a2.6 2.6 0 11-2.6-2.6c.2 0 .4.02.6.06V11.2a5.65 5.65 0 00-.6-.03A5.6 5.6 0 106.36 20.4a5.6 5.6 0 004.75-8.55V9.4a7.3 7.3 0 004.24 1.36V7.7a4.28 4.28 0 01-1.75-1.88z"/></svg>',
+  phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>',
   default: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>'
 };
 
@@ -1937,31 +1966,56 @@ function socialIconMarkup(platform) {
   return SOCIAL_ICONS[key] || SOCIAL_ICONS.default;
 }
 
+function appendSocialItem(nav, contact, footer, opts) {
+  // opts: { href, iconKey, label, external }
+  var navA = document.createElement('a');
+  navA.href = opts.href; navA.className = 'nav__soc';
+  if (opts.external) { navA.target = '_blank'; navA.rel = 'noopener noreferrer'; }
+  navA.title = opts.label; navA.setAttribute('aria-label', opts.label);
+  navA.innerHTML = socialIconMarkup(opts.iconKey);
+  nav.appendChild(navA);
+
+  var cA = document.createElement('a');
+  cA.href = opts.href; cA.className = 'soc-btn';
+  if (opts.external) { cA.target = '_blank'; cA.rel = 'noopener noreferrer'; }
+  cA.setAttribute('aria-label', opts.label);
+  cA.innerHTML = socialIconMarkup(opts.iconKey) + ' ' + esc(opts.label);
+  contact.appendChild(cA);
+
+  var fA = document.createElement('a');
+  fA.href = opts.href; fA.className = 'footer__soc';
+  if (opts.external) { fA.target = '_blank'; fA.rel = 'noopener noreferrer'; }
+  fA.title = opts.label; fA.setAttribute('aria-label', opts.label);
+  fA.innerHTML = socialIconMarkup(opts.iconKey);
+  footer.appendChild(fA);
+}
+
 function renderSocials() {
   var nav = document.getElementById('navSocials');
   var contact = document.getElementById('contactSocials');
   var footer = document.getElementById('footerSocials');
   nav.innerHTML = ''; contact.innerHTML = ''; footer.innerHTML = '';
 
+  // Телефон — первым в ряду, клик сразу открывает звонок.
+  var phone = (DATA.settings && DATA.settings.phone_number) || '';
+  var phoneDigits = phone.replace(/[^\d+]/g, '');
+  if (phoneDigits) {
+    appendSocialItem(nav, contact, footer, {
+      href: 'tel:' + phoneDigits,
+      iconKey: 'phone',
+      label: phone,
+      external: false
+    });
+  }
+
   DATA.socials.forEach(function (s) {
     if (!s.url) return;
-    var navA = document.createElement('a');
-    navA.href = s.url; navA.className = 'nav__soc'; navA.target = '_blank'; navA.rel = 'noopener noreferrer';
-    navA.title = s.platform; navA.setAttribute('aria-label', s.platform);
-    navA.innerHTML = socialIconMarkup(s.platform);
-    nav.appendChild(navA);
-
-    var cA = document.createElement('a');
-    cA.href = s.url; cA.className = 'soc-btn'; cA.target = '_blank'; cA.rel = 'noopener noreferrer';
-    cA.setAttribute('aria-label', s.platform);
-    cA.innerHTML = socialIconMarkup(s.platform) + ' ' + esc(s.platform);
-    contact.appendChild(cA);
-
-    var fA = document.createElement('a');
-    fA.href = s.url; fA.className = 'footer__soc'; fA.target = '_blank'; fA.rel = 'noopener noreferrer';
-    fA.title = s.platform; fA.setAttribute('aria-label', s.platform);
-    fA.innerHTML = socialIconMarkup(s.platform);
-    footer.appendChild(fA);
+    appendSocialItem(nav, contact, footer, {
+      href: s.url,
+      iconKey: s.platform,
+      label: s.platform,
+      external: true
+    });
   });
 
   document.getElementById('footYear').textContent = '© ' + new Date().getFullYear();
@@ -2207,52 +2261,41 @@ function cardMarkup(card, idx) {
     '<a href="' + esc(linkUrl) + '" class="card__link">' + esc(linkTxt) + '</a></div>';
 }
 
+function buildMapHref(s) {
+  if (s.map_link && s.map_link.trim()) return s.map_link.trim();
+  var lat = parseFloat(s.map_lat), lng = parseFloat(s.map_lng);
+  if (!isNaN(lat) && !isNaN(lng)) {
+    return 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng;
+  }
+  return '';
+}
+
 function officeCardMarkup() {
   var s = DATA.settings || {};
   var officeLabel = (window.i18n && window.i18n.t('services.officeLabel')) || 'Наш офис';
+  var openLabel = (window.i18n && window.i18n.t('services.openInMaps')) || 'Открыть в Google Картах';
   var address = loc(s, 'address') || '';
-  return '<div class="card card--office reveal in" role="listitem" style="transition-delay:.32s" aria-label="' + esc(officeLabel) + '">' +
-    '<div class="card__office-label">' + esc(officeLabel) + '</div>' +
-    '<div class="card__map" id="officeMap" role="img" aria-label="' + esc(address) + '">' +
-      '<div class="card__map-city">' + esc(address) + '</div>' +
-    '</div></div>';
-}
-
-var leafletMap = null;
-var officeMapObserver = null;
-
-function initOfficeMap() {
-  var s = DATA.settings || {};
   var lat = parseFloat(s.map_lat), lng = parseFloat(s.map_lng);
-  var el = document.getElementById('officeMap');
-  if (isNaN(lat) || isNaN(lng) || !el) return;
+  var href = buildMapHref(s);
+  var hasCoords = !isNaN(lat) && !isNaN(lng);
 
-  function draw() {
-    if (!window.L) return;
-    if (leafletMap) { leafletMap.remove(); leafletMap = null; }
-    leafletMap = L.map(el, { zoomControl: false, attributionControl: false, dragging: false, scrollWheelZoom: false, doubleClickZoom: false, boxZoom: false, keyboard: false })
-      .setView([lat, lng], s.map_zoom || 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(leafletMap);
-    L.marker([lat, lng]).addTo(leafletMap);
-    setTimeout(function () { if (leafletMap) leafletMap.invalidateSize(); }, 200);
-  }
+  var mapInner = hasCoords
+    ? '<iframe class="card__map-frame" src="https://www.google.com/maps?q=' + lat + ',' + lng + '&z=' + (s.map_zoom || 15) + '&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1" aria-hidden="true"></iframe>'
+    : '<div class="card__map-placeholder" aria-hidden="true"></div>';
 
-  // Карта офиса обычно ниже первого экрана — грузим библиотеку и рисуем
-  // карту, только когда пользователь реально долистал до неё.
-  if ('IntersectionObserver' in window) {
-    if (officeMapObserver) officeMapObserver.disconnect();
-    officeMapObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          officeMapObserver.disconnect();
-          window.loadLeaflet().then(draw);
-        }
-      });
-    }, { rootMargin: '200px' });
-    officeMapObserver.observe(el);
-  } else {
-    window.loadLeaflet().then(draw);
-  }
+  var hint = href ? '<div class="card__map-hint">' + esc(openLabel) + ' ↗</div>' : '';
+  var tag = href ? 'a' : 'div';
+  var hrefAttr = href ? ' href="' + esc(href) + '" target="_blank" rel="noopener noreferrer"' : '';
+
+  return '<' + tag + ' class="card card--office reveal in" role="listitem"' + hrefAttr +
+      ' style="transition-delay:.32s" aria-label="' + esc(officeLabel) + (address ? ', ' + esc(address) : '') + '">' +
+    '<div class="card__office-label">' + esc(officeLabel) + '</div>' +
+    '<div class="card__map">' +
+      mapInner +
+      (address ? '<div class="card__map-city">' + esc(address) + '</div>' : '') +
+      hint +
+    '</div>' +
+  '</' + tag + '>';
 }
 
 function renderServicesGrid() {
@@ -2262,7 +2305,6 @@ function renderServicesGrid() {
   html += officeCardMarkup();
   grid.innerHTML = html;
   bindMiniSlider();
-  initOfficeMap();
 }
 
 /* =====================================================
@@ -2393,6 +2435,38 @@ function bindChrome() {
 /* =====================================================
    BOOTSTRAP
 ===================================================== */
+function renderSeoJsonLd() {
+  var el = document.getElementById('ld-organization');
+  if (!el) return;
+  var s = DATA.settings || {};
+  var lat = parseFloat(s.map_lat), lng = parseFloat(s.map_lng);
+  var address = loc(s, 'address') || '';
+  var phone = (s.phone_number || '').trim();
+
+  var data = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    'name': 'BURE27',
+    'url': 'https://bure.az/',
+    'logo': (s.logo_type === 'image' && s.logo_image_url) ? s.logo_image_url : 'https://bure.az/og-image.jpg',
+    'image': 'https://bure.az/og-image.jpg',
+    'description': 'Производство и продажа мебели в Баку. Мебель на заказ, фурнитура, кондиционеры, шторы, освещение, интерьер под ключ.'
+  };
+  if (address) {
+    data.address = { '@type': 'PostalAddress', 'streetAddress': address, 'addressLocality': 'Баку', 'addressCountry': 'AZ' };
+  }
+  if (!isNaN(lat) && !isNaN(lng)) {
+    data.geo = { '@type': 'GeoCoordinates', 'latitude': lat, 'longitude': lng };
+    data.hasMap = buildMapHref(s);
+  }
+  if (phone) data.telephone = phone;
+  if (DATA.socials && DATA.socials.length) {
+    data.sameAs = DATA.socials.map(function (soc) { return soc.url; }).filter(Boolean);
+  }
+
+  el.textContent = JSON.stringify(data, null, 2);
+}
+
 function renderAllDynamic() {
   renderLogo();
   renderSocials();
@@ -2400,6 +2474,7 @@ function renderAllDynamic() {
   renderSliderMarkup();
   renderServicesGrid();
   renderSuppliersGrid();
+  renderSeoJsonLd();
 }
 
 function boot() {
