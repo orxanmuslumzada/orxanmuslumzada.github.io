@@ -11,15 +11,15 @@
 <meta name="keywords" content="BURE27, мебель, мебель Баку, мебель Азербайджан, производство мебели, мебель на заказ, магазин мебели, корпусная мебель, мягкая мебель, элитная мебель, премиальная мебель, мебель для дома, мебель для спальни, мебель для гостиной, кухонная мебель, офисная мебель, гостиничная мебель, мебельная фурнитура, фурнитура для мебели, петли и фурнитура, комплектующие для мебели, кондиционеры, продажа кондиционеров, установка кондиционеров, климатические системы, шторы, жалюзи, рулонные шторы, римские шторы, блэкаут шторы, освещение, LED освещение, люстры, светильники, дизайн интерьера, комплектация интерьера, ремонт под ключ, мебель под ключ, монтаж мебели, сборка мебели, комплектация квартир, комплектация вилл, mebel, mebel Bakı, mebel istehsalı, sifarişlə mebel, mebel fabriki, mebel furnituru, kondisioner, pərdə, işıqlandırma, açar təslim interyer, custom furniture Baku, furniture manufacturer Azerbaijan, furniture fittings, air conditioners, curtains, lighting, turnkey interior">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#3d4a1c">
-<link rel="canonical" href="https://bure.az/">
+<link rel="canonical" href="https://bure27.az/">
 
 <!-- ============ SEO: Open Graph (Facebook, LinkedIn, WhatsApp-превью) ============ -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BURE27">
 <meta property="og:title" content="BURE27 — производство и продажа мебели в Баку">
 <meta property="og:description" content="Мебель на заказ, мебельная фурнитура, кондиционеры, шторы, освещение и комплектация объектов под ключ в Баку.">
-<meta property="og:url" content="https://bure.az/">
-<meta property="og:image" content="https://bure.az/og-image.jpg">
+<meta property="og:url" content="https://bure27.az/">
+<meta property="og:image" content="https://bure27.az/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="ru_RU">
@@ -30,7 +30,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="BURE27 — мебель, фурнитура, кондиционеры, шторы, освещение">
 <meta name="twitter:description" content="Производство и продажа мебели в Баку. Мебель на заказ, фурнитура, кондиционеры, шторы, освещение, интерьер под ключ.">
-<meta name="twitter:image" content="https://bure.az/og-image.jpg">
+<meta name="twitter:image" content="https://bure27.az/og-image.jpg">
 
 <!-- ============ SEO: структурированные данные (Organization/LocalBusiness) ============
      Базовый вариант ниже виден сразу; после загрузки данных из Supabase
@@ -41,8 +41,8 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "BURE27",
-  "url": "https://bure.az/",
-  "logo": "https://bure.az/og-image.jpg",
+  "url": "https://bure27.az/",
+  "logo": "https://bure27.az/og-image.jpg",
   "description": "Производство и продажа мебели в Баку. Мебель на заказ, фурнитура, кондиционеры, шторы, освещение, интерьер под ключ.",
   "address": {
     "@type": "PostalAddress",
@@ -1525,6 +1525,13 @@ if (!/^eyJ/.test(window.SUPABASE_ANON_KEY)) {
 
 window.sb = window.supabase.createClient(window.SUPABASE_URL, window.SUPABASE_ANON_KEY);
 
+/**
+ * Ключ для отправки писем с формы "Связаться с нами" через Web3Forms
+ * (web3forms.com) — бесплатный сервис, не требует своего сервера.
+ * Получить ключ: web3forms.com → ввести свою почту → Create Access Key.
+ */
+window.WEB3FORMS_ACCESS_KEY = 'YOUR-WEB3FORMS-ACCESS-KEY';
+
 </script>
 <script>
 window.LOCALES = window.LOCALES || {};
@@ -2372,17 +2379,57 @@ function bindForm() {
     btn.textContent = window.i18n.t('form.sending');
     note.textContent = '';
 
-    window.sb.functions.invoke('send-contact-email', { body: payload })
-      .then(function (res) {
-        if (res.error) throw res.error;
-        note.textContent = window.i18n.t('form.success');
-        note.className = 'form__note ok';
-        form.reset();
+    // 1) Сохраняем заявку в Supabase — она появится в админке (раздел «Заявки»),
+    //    независимо от того, придёт письмо или нет.
+    var dbInsert = window.sb.from('contact_submissions').insert({
+      name: payload.name,
+      phone: payload.phone,
+      object_type: payload.object_type,
+      style: payload.style,
+      material: payload.material,
+      message: payload.message,
+      lang: payload.lang,
+      page_url: payload.page_url,
+      email_status: 'pending'
+    });
+
+    // 2) Отправляем письмо через Web3Forms — без своего сервера и без Edge Function.
+    var emailSend = fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: window.WEB3FORMS_ACCESS_KEY,
+        subject: 'Новая заявка с сайта BURE27 — ' + payload.name,
+        from_name: 'BURE27 — форма на сайте',
+        name: payload.name,
+        phone: payload.phone,
+        'Тип объекта': payload.object_type || '—',
+        'Стиль': payload.style || '—',
+        'Материал': payload.material || '—',
+        message: payload.message || '—',
+        'Язык страницы': payload.lang,
+        'Страница': payload.page_url
       })
-      .catch(function (err) {
-        console.error('[form] submit failed', err);
-        note.textContent = window.i18n.t('form.error');
-        note.className = 'form__note err';
+    }).then(function (r) { return r.json(); });
+
+    Promise.allSettled([dbInsert, emailSend])
+      .then(function (results) {
+        var emailResult = results[1];
+        var emailOk = emailResult.status === 'fulfilled' && emailResult.value && emailResult.value.success;
+        if (!emailOk) console.error('[form] email send failed', emailResult);
+
+        var dbResult = results[0];
+        var dbOk = dbResult.status === 'fulfilled' && !(dbResult.value && dbResult.value.error);
+        if (!dbOk) console.error('[form] db insert failed', dbResult);
+
+        if (emailOk || dbOk) {
+          note.textContent = window.i18n.t('form.success');
+          note.className = 'form__note ok';
+          form.reset();
+        } else {
+          note.textContent = window.i18n.t('form.error');
+          note.className = 'form__note err';
+        }
       })
       .finally(function () {
         btn.disabled = false;
@@ -2447,9 +2494,9 @@ function renderSeoJsonLd() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     'name': 'BURE27',
-    'url': 'https://bure.az/',
-    'logo': (s.logo_type === 'image' && s.logo_image_url) ? s.logo_image_url : 'https://bure.az/og-image.jpg',
-    'image': 'https://bure.az/og-image.jpg',
+    'url': 'https://bure27.az/',
+    'logo': (s.logo_type === 'image' && s.logo_image_url) ? s.logo_image_url : 'https://bure27.az/og-image.jpg',
+    'image': 'https://bure27.az/og-image.jpg',
     'description': 'Производство и продажа мебели в Баку. Мебель на заказ, фурнитура, кондиционеры, шторы, освещение, интерьер под ключ.'
   };
   if (address) {
