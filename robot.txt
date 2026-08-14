@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bure.az/sitemap.xml
+Sitemap: https://bure27.az/sitemap.xml
